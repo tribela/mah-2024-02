@@ -7,6 +7,7 @@ from pprint import pprint
 import fastapi
 import httpx
 from lxml import html
+from pydantic import BaseModel
 
 
 app = fastapi.FastAPI()
