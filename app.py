@@ -2,8 +2,6 @@ import re
 
 from datetime import datetime
 
-from pprint import pprint
-
 import fastapi
 import httpx
 from lxml import html
@@ -80,6 +78,10 @@ async def handle_status_created(instance: str, token: str, status):
 
     if not is_mention_only(content):
         return
+
+    if SPAM_URL in content:
+        print('Got! Spam URL')
+        return do_it(account, instance, token)
 
     media_attachments = status.get('media_attachments', [])
     if len(media_attachments) != 1:
