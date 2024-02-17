@@ -99,7 +99,7 @@ async def handle_status_created(instance: str, token: str, status):
 async def do_it(account, instance, token):
     print(f'Spam found: {account["acct"]}')
     async with httpx.AsyncClient() as client:
-        await client.post(
+        res = await client.post(
             f'https://{instance}/api/v1/admin/accounts/{account["id"]}/action',
             headers={
                 'Authorization': f'Bearer {token}',
@@ -109,3 +109,6 @@ async def do_it(account, instance, token):
                 'text': '2024-02 kuroneko spam',
             }
         )
+        print(res.status_code)
+        if res.is_success:
+            print(res.text)
