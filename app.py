@@ -105,7 +105,7 @@ async def do_it(account, instance, token):
                 'Authorization': f'Bearer {token}',
             },
             json={
-                'action': 'suspend',
+                'type': 'suspend',
                 'text': '2024-02 kuroneko spam',
             }
         )
