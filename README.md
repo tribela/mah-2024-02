@@ -24,4 +24,4 @@ https://<인스턴스 주소>/settings/applications
 
 예시
 
-> https://kucingkacang.kjwon15.net/hooks/qdon.space/lskdfjskldjfklsdjfkls
+> `https://kucingkacang.kjwon15.net/hooks/qdon.space/lskdfjskldjfklsdjfkls`
