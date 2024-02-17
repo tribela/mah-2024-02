@@ -76,8 +76,9 @@ async def handle_status_created(instance: str, token: str, status):
     if is_mention_only(content):
         return do_it(account, instance, token)
 
-    if not is_mention_only(content):
-        return
+    # XXX: Disabled for now because some users are posting with some text
+    # if not is_mention_only(content):
+    #     return
 
     if SPAM_URL in content:
         print('Got! Spam URL')
