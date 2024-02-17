@@ -2,6 +2,7 @@ FROM python:3.10
 
 WORKDIR /app
 ENV PATH="/root/.local/bin:${PATH}"
+ENV PYTHONUNBUFFERED=1
 
 COPY pyproject.toml poetry.lock ./
 RUN \
