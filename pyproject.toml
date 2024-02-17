@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "Spam filter"
+name = "Kucing Kacang"
 version = "0.1.0"
-description = ""
+description = "Spam filter for kuroneko"
 authors = ["'Jeong Arm' <'kjwonmail@gmail.com'>"]
 readme = "README.md"
 packages = []
