@@ -55,6 +55,7 @@ async def handle_status_created(instance: str, token: str, status):
     acc_created_at = datetime.strptime(acc_created_at, '%Y-%m-%dT%H:%M:%S.%fZ')
     visibility = status['visibility']
     reblog = status.get('reblog', None)
+    mentions = status.get('mentions', [])
     language = status['language']
     content = status['content']
 
@@ -65,18 +66,20 @@ async def handle_status_created(instance: str, token: str, status):
         return
     if language not in ['ja', None]:
         return
-    if display_name:
-        return
+    # if display_name:
+    #     return
 
     if acc_created_at < datetime(2024, 2, 14):
         return
 
+    if len(username) != 10:
+        return
+
+    return do_it(account, instance, token)
+
     if SPAM_URL in content:
         print('Got! Spam URL')
         return do_it(account, instance, token)
-
-    if len(username) != 10:
-        return
 
     if is_mention_only(content):
         return do_it(account, instance, token)
