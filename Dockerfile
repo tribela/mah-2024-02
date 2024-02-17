@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=1
 
 COPY pyproject.toml poetry.lock ./
 RUN \
-    curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.2.0 python3 && \
+    curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.7.1 python3 && \
     poetry config virtualenvs.create false && \
     poetry install --only main --no-root
 COPY . ./
