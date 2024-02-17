@@ -13,7 +13,7 @@ app = fastapi.FastAPI()
 
 # Blurhash, size
 blocklist_images = [
-    ('UTQcbkVY%gIU8w8_%Mxu%2Rjayt7.8?bMxRj', '1009x200'),  # Discord URL
+    ('UTQcblVY%gIU8w8_%Mxu%2Rjayt7.8?bMxRj', '1009x200'),  # Discord URL
     ('UCSs4}tS_4aIx]ofM{WE?cV?D$tSD$WY%NjE', '1080x1080'),  # Spam image with url
     ('UkKBv%k8Oas:t1f9V[ae|;afoJofs;bYovjZ', '200x200'),  # Spam image with url (2)
 ]
