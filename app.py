@@ -65,11 +65,15 @@ async def handle_status_created(instance: str, token: str, status):
         return
     if language not in ['ja', None]:
         return
-    if username != display_name:
+    if display_name:
         return
 
     if acc_created_at < datetime(2024, 2, 14):
         return
+
+    if SPAM_URL in content:
+        print('Got! Spam URL')
+        return do_it(account, instance, token)
 
     if len(username) != 10:
         return
@@ -80,10 +84,6 @@ async def handle_status_created(instance: str, token: str, status):
     # XXX: Disabled for now because some users are posting with some text
     # if not is_mention_only(content):
     #     return
-
-    if SPAM_URL in content:
-        print('Got! Spam URL')
-        return do_it(account, instance, token)
 
     media_attachments = status.get('media_attachments', [])
     if len(media_attachments) != 1:
