@@ -59,14 +59,12 @@ async def handle_status_created(instance: str, token: str, status):
     language = status['language']
     content = status['content']
 
-    print(f'acct: {acct}')
-
-    is_local = '@' in acct
-    username = acct.split('@')[0] if not is_local else acct
+    username = acct.split('@')[0] if ('@' in acct) else acct
+    print(f'acct: {acct}, username: {username}')
 
     url = status['url']
 
-    if is_local or reblog is not None:
+    if reblog is not None:
         return
 
     if visibility != 'public':
