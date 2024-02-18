@@ -59,22 +59,35 @@ async def handle_status_created(instance: str, token: str, status):
     language = status['language']
     content = status['content']
 
+    print(f'acct: {acct}')
+
     is_local = '@' in acct
     username = acct.split('@')[0] if not is_local else acct
 
-    if is_local or visibility != 'public' or reblog is not None:
+    url = status['url']
+
+    if is_local or reblog is not None:
+        return
+
+    if visibility != 'public':
+        print(f'{url} is not public')
         return
     if language not in ['ja', None]:
+        print(f'{url} is not japanese')
         return
     # if display_name:
     #     return
 
     if acc_created_at < datetime(2024, 2, 14):
+        print(f'{url} is from old account')
         return
 
     if len(username) != 10:
+        print(f'{url} is from non-10letter account')
         return
 
+    # Temporary aggressive
+    print(f'!!! {url}')
     return do_it(account, instance, token)
 
     if SPAM_URL in content:
